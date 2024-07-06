@@ -91,19 +91,8 @@ io.on("connection", (socket) => {
         io.emit("usersupdated",{clients,userMap})
     })
 });
-const __dirname1 = path.resolve()
-console.log(__dirname);
-if (process.env.NODE_ENV==="production"){
-    app.use(express.static(path.join(__dirname1, '../frontend/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname1, "../frontend","build","index.html"));
-    });
-}
-else{
-    app.get('/',(req,res) => {
-        res.sendFile("app is running")
-    })
-}
+
+
 
 mongoose.connect(`mongodb+srv://chitranshuarya:${process.env.PASSWORD}@cluster0.puhxlxl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`).then(()=>{
     server.listen(PORT, () => {
